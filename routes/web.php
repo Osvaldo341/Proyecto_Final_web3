@@ -36,7 +36,7 @@ Route::get('/hospitalizacion', function(){
     return view('hospitalizacion',compact('hospitalizacion','pacientes','sala'));
 })->name('hospitalizacion');
 
-Route::get('consultaHospitalizados',[HospitalizacionController::class,'pacientes_hospitalizados']);
+
 
 
 
@@ -67,4 +67,7 @@ Route::post('/tipodiagnostico/actualizar/{id}', [DiagnosticoController::class, '
 //----------------------------------------------------------------------------------
 //consultas
 //pacientes activos en salas
-Route::get('consultaSala',[HospitalizacionController::class, 'pacientes_por_sala']);
+//Route::get('consultaSala',[HospitalizacionController::class, 'pacientes_por_sala']);
+//Route::get('consultaHospitalizados',[HospitalizacionController::class,'pacientes_hospitalizados']);
+Route::get('consultaHospitalizados', [HospitalizacionController::class,'pacientes_con_dias'] );
+Route::get('consultaSala',[HospitalizacionController::class, 'pacientes_alfabetico']);

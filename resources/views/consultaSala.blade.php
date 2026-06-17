@@ -17,51 +17,38 @@
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-custom px-4 py-3">
-        <span class="navbar-brand fw-bold">Ocupación por Sala</span>
+        <span class="navbar-brand fw-bold">Pacientes Ordenados Alfabeticamente      </span>
     </nav>
 
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="{{ route('welcome') }}" class="btn btn-dark">← Inicio</a>
+            <a href="{{ route('welcome') }}" class="btn btn-outline-dark me-md-2">← Inicio</a>
             <span></span>
         </div>
 
-        <div class="row g-3 mb-4 justify-content-center">
-            @foreach ($lista as $item)
-            <div class="col-md-3">
-                <div class="card card-sala p-3 text-center">
-                    <div class="fs-2 fw-bold text-primary">{{ $item->total }}</div>
-                    <div class="fw-semibold">{{ $item->sala }}</div>
-                    <div class="text-muted small">pacientes activos</div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-
-        <div class="table-responsive mx-auto p-2" style="max-width:800px;">
-            <table class="table table-striped table-hover align-middle border">
-                <thead>
+        <div class="table-responsive mx-auto p-2" style="max-width:700px;">
+        <table class="table table-striped table-hover align-middle border">
+            <thead>
+                <tr>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
+                    <th>Diagnostico</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($lista as $h)
                     <tr>
-                        <th>Sala</th>
-                        <th class="text-center">Pacientes Hospitalizados</th>
+                        <td>{{ $h->apellido }}</td>
+                        <td>{{ $h->  nombre}}</td>
+                        <td>{{ $h-> diagnostico }}</td>
+                        
                     </tr>
-                </thead>
-                <tbody>
-                    @forelse ($lista as $item)
-                        <tr>
-                            <td>{{ $item->sala }}</td>
-                            <td class="text-center">
-                                <span class="badge bg-dark fs-6">{{ $item->total }}</span>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="2" class="text-center text-muted">No hay datos disponibles</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
+                @endforeach
+            </tbody>
+            
+
+        </table>
+    </div>
     </div>
 </body>
 </html> 

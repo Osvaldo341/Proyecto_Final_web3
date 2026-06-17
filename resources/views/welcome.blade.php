@@ -108,16 +108,16 @@
         <div class="col-md-6">
             <a href="consultaHospitalizados" class="card card-modulo card-hosp p-4 d-block">
                 <div class="card-icon"><i class="bi bi-person-check-fill"></i></div>
-                <h5 class="fw-bold mb-1">Pacientes Hospitalizados</h5>
-                <p class="mb-0 opacity-75">Ver pacientes actualmente internados.</p>
+                <h5 class="fw-bold mb-1">Dias Totales de Pacientes Hospitalizados</h5>
+                <p class="mb-0 opacity-75">Ver los dias.</p>
             </a>
         </div>
 
         <div class="col-md-6">
             <a href="consultaSala  " class="card card-modulo card-salas p-4 d-block">
                 <div class="card-icon"><i class="bi bi-bar-chart-fill"></i></div>
-                <h5 class="fw-bold mb-1">Ocupacion por Sala</h5>
-                <p class="mb-0 opacity-75">Ver cuantos pacientes hay en cada sala.</p>
+                <h5 class="fw-bold mb-1">Pacientes ordenados alfabeticamente</h5>
+                <p class="mb-0 opacity-75">de A - Z.</p>
             </a>
         </div>
 

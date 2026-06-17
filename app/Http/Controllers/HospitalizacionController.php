@@ -27,6 +27,16 @@ class HospitalizacionController extends Controller
         // Enviamos el resultado directamente a tu vista de salas
         return view('consultaSala', compact('lista'));
     }
+   public function pacientes_alfabetico()
+{
+    $lista = DB::table('paciente as p')
+        ->join('tipo_diagnostico as d', 'p.tipo_diagnostico_id', '=', 'd.id')
+        ->select('p.nombre', 'p.apellido', 'd.nombre as diagnostico')
+        ->orderBy('p.apellido')
+        ->get();
+
+    return view('consultaSala', compact('lista'));
+}
 public function pacientes_hospitalizados()
 {
     // Mantenemos estrictamente tus nombres de tablas en singular y tus mismos JOINs
@@ -39,6 +49,37 @@ public function pacientes_hospitalizados()
         ->get();
 
     // Retornamos la vista pasando exactamente la variable '$lista'
+    return view('consultaHospitalizados', compact('lista'));
+}
+public function pacientes_con_dias()
+{
+    $lista = DB::table('hospitalizacion as h')
+        ->join('paciente as p', 'h.paciente_id', '=', 'p.id')
+        ->join('sala as s', 'h.sala_id', '=', 's.id')
+        ->join('tipo_diagnostico as d', 'p.tipo_diagnostico_id', '=', 'd.id')
+        ->select(
+            'p.nombre',
+            'p.apellido',
+            'd.nombre as diagnostico',
+            's.nombre as sala',
+            'h.fecha_ingreso',
+            'h.fecha_alta',
+            DB::raw("
+                DATEDIFF(
+                    LEAST(COALESCE(h.fecha_alta, CURDATE()), CURDATE()),
+                    h.fecha_ingreso
+                ) AS dias_internado
+            "),
+            DB::raw("
+                CASE 
+                    WHEN h.fecha_alta IS NULL     THEN 'Internado indefinidamente'
+                    WHEN h.fecha_alta > CURDATE() THEN 'Internado pero con fecha de salida '
+                    ELSE 'Alta'
+                END AS estado
+            ")
+        )
+        ->get();
+
     return view('consultaHospitalizados', compact('lista'));
 }
  

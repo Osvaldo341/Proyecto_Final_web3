@@ -12,13 +12,13 @@
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-custom px-4 py-3">
-        <span class="navbar-brand fw-bold">Pacientes Hospitalizados Actualmente</span>
+        <span class="navbar-brand fw-bold">Cantidad de dias que esta un paciente hospitalizado </span>
     </nav>
 
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-dark">← Inicio</a>
-            <span class="badge bg-dark fs-6">{{ count($lista) }} pacientes</span>
+            <a href="{{ route('welcome') }}" class="btn btn-outline-dark me-md-2">← Inicio</a>
+
         </div>
         <div class="table-responsive mx-auto p-2" style="max-width:800px;">
             <table class="table table-striped table-hover align-middle border">
@@ -29,6 +29,9 @@
                         <th>Diagnóstico</th>
                         <th>Fecha Ingreso</th>
                         <th>Sala</th>
+                        <th>Dias Hospitalizado</th>
+                        <th>Estado</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +43,8 @@
                             <td>{{ $item->diagnostico}}</td>
                             <td>{{ $item->fecha_ingreso }}</td>
                             <td>{{ $item->sala }}</td>
+                            <td>{{ $item->dias_internado }}</td>
+                            <td>{{ $item->estado }}</td>
                         </tr>
                     @empty
                         <tr>
