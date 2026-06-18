@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hospitalizacion;
+use App\Models\Paciente;
+use App\Models\Sala;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,9 @@ class HospitalizacionController extends Controller
     public function index()
     {
         $hospitalizacion=Hospitalizacion::all();
-        return view('hospitalizacion', compact('hospitalizacion'));
+        $pacientes = Paciente::all();
+        $sala = Sala::all();
+        return view('hospitalizacion', compact('hospitalizacion','pacientes','sala'));
     }
     public function pacientes_por_sala()
     {

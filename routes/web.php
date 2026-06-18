@@ -14,32 +14,17 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 // todo los metodos de pacientes 
-
-Route::get('/pacientes', function(){
-    $pacientes = Paciente::all();
-    $diagnostico =Diagnostico::all();
-    return view('pacientes', compact('pacientes','diagnostico'));
-})->name('pacientes');  
-
+ 
+Route::get('/pacientes',[PacienteController::class,'index'])->name('pacientes');
 Route::post('/pacientes/guardar/', [PacienteController::class, 'store']);
-
 Route::get('/pacientes/eliminar/{id}', [PacienteController::class, 'destroy']);
 Route::post('/pacientes/actualizar/{id}', [PacienteController::class, 'update']);
 
 
 //---------------------------------------------
 //metodos de todos hospitalizacion 
-Route::get('/hospitalizacion', function(){
-    $hospitalizacion = Hospitalizacion::all();
-    $pacientes = Paciente::all();
-    $sala = Sala::all();
-    return view('hospitalizacion',compact('hospitalizacion','pacientes','sala'));
-})->name('hospitalizacion');
 
-
-
-
-
+Route::get('/hospitalizacion', [HospitalizacionController::class, 'index'])->name('hospitalizacion');
 Route::post('hospitalizacion/guardar', [HospitalizacionController::class, 'store']);
 Route::get('hospitalizacion/eliminar/{id}', [HospitalizacionController::class, 'destroy']);
 Route::post('/hospitalizacion/actualizar/{id}', [HospitalizacionController::class, 'update']);
@@ -54,12 +39,8 @@ Route::post('/salas/actualizar/{id}', [SalaController::class, 'update']);
 
 //---------------------------------------------
 //metodos de todos los diagnosticos
-Route::get('/tipodiagnostico', function(){
-    $diagnostico = Diagnostico::all();
-    return view('tipodiagnostico', compact('diagnostico'));
-})->name('tipodiagnostico');
+Route::get('/tipodiagnostico', [DiagnosticoController::class, 'index'])->name('tipodiagnostico');
 Route::post('/tipodiagnostico/guardar/', [DiagnosticoController::class, 'store']);
-
 Route::get('/tipodiagnostico/eliminar/{id}', [DiagnosticoController::class, 'destroy']);        
 Route::post('/tipodiagnostico/actualizar/{id}', [DiagnosticoController::class, 'update']);
 

@@ -3,12 +3,16 @@
     namespace App\Http\Controllers;
 
     use App\Models\Paciente;
+    use App\Models\Diagnostico;
     use Illuminate\Http\Request;
 
     class PacienteController extends Controller
     {
         public function index()
         {
+            $pacientes = Paciente::all();
+            $diagnostico =Diagnostico::all();
+            return view('pacientes', compact('pacientes','diagnostico'));
 
         }
 

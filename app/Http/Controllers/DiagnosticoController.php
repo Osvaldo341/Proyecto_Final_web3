@@ -13,7 +13,7 @@ class DiagnosticoController extends Controller
     public function index()
     {
        $diagnostico=Diagnostico::all();
-        return view('diagnostico', compact('diagnostico'));
+        return view('tipodiagnostico', compact('diagnostico'));
     }
     public function store(Request $request)
     {

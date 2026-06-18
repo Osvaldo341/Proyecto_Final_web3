@@ -13,6 +13,9 @@ class SalaController extends Controller
     public function index()
     {
         $sala = Sala::all();
+        //foreach($sala as $xd){
+         //   $xd->capacidad= $xd->capacidad*2;   
+        //}   
         return view('salas', compact('sala'));
     }
 

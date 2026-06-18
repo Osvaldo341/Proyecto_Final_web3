@@ -22,7 +22,7 @@
 
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-dark me-md-2">← Inicio</a>
+            <a href="{{ route('welcome') }}" class="btn btn-outline-dark me-md-2        ">← Inicio</a>
             <span></span>
         </div>
 
